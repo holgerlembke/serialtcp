@@ -12,18 +12,18 @@ class serialTCP : public Print
 {
   private:
     String _ip;
-	uint16_t _port;
+    uint16_t _port;
     WiFiClient _client;
-	bool _reconnect;	
-	
-	void opentcp();
-	void closetcp();
+    bool _reconnect;
+    
+    void opentcp();
+    void closetcp();
   public:
     serialTCP();
-	virtual ~serialTCP();
+    virtual ~serialTCP();
 
     size_t write(uint8_t data);
-	size_t write(const char *str);
+    size_t write(const char *str);
     size_t write(const uint8_t *buffer, size_t size);
 
     void begin(long baud, String ip, uint16_t port, bool reconnect = true);
