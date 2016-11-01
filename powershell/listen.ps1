@@ -17,7 +17,7 @@ function listen($port=2223, $IPAdress="127.0.0.1"){
     $stream = $client.GetStream()
       while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0)
       {
-        $enc.GetString($bytes[0..($i-1)])
+        write-host -NoNewline $enc.GetString($bytes[0..($i-1)])
       }
     $client.Close()
     $listener.Stop()
