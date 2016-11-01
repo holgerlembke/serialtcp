@@ -88,4 +88,6 @@ void serialTCP::begin(long baud, String ip, uint16_t port, bool reconnect)
     _ip=ip;
     _reconnect=reconnect;
     closetcp();
+	
+	Serial.begin(baud);
 }
