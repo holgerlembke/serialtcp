@@ -28,6 +28,37 @@ size_t serialTCP::write(uint8_t data)
 }
 
 //*************************************************************************************
+size_t serialTCP::write(const char *str)
+{
+   if (str == NULL) return 0; 
+
+  if (! _client) {
+    opentcp();	
+  }
+
+  if (_client) {
+    _client.write((const uint8_t *)str, strlen(str)); 
+  }	
+	
+   return Serial.write((const uint8_t *)str, strlen(str)); 
+}
+
+//*************************************************************************************
+size_t serialTCP::write(const uint8_t *buffer, size_t size)
+{
+  if (! _client) {
+    opentcp();	
+  }
+
+  if (_client) {
+    _client.write((const uint8_t *)buffer, size);
+  }	
+	
+  return Serial.write((const uint8_t *)buffer, size);
+}
+
+
+//*************************************************************************************
 void serialTCP::opentcp()
 {
   if (_ip!="") {
@@ -38,6 +69,7 @@ void serialTCP::opentcp()
 	  }
       return;
     }
+	_client.setNoDelay(true); 
   }
 }
 
