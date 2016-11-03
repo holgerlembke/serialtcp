@@ -7,7 +7,7 @@
  any keypress should stop the script (if it is not waiting for connections... needs to be optimized)
 #>
 
-function listen($port=2223, $IPAdress="127.0.0.1"){
+function tcplisten($port=2223, $IPAdress="127.0.0.1"){
   $enc = [System.Text.Encoding]::ASCII
   $loop=$true;
 
@@ -44,3 +44,21 @@ function listen($port=2223, $IPAdress="127.0.0.1"){
   }
 }
 
+function udplisten($port=2223, $IPAdress="127.0.0.1"){
+  write-host "Listen on  $IPAdress $port"
+  $enc = [System.Text.Encoding]::ASCII
+  $loop=$true;
+  while ($loop)
+  {
+    $endpoint = new-object System.Net.IPEndPoint ([IPAddress]::Any,$port)
+    $udpclient=new-Object System.Net.Sockets.UdpClient $port
+    $content=$udpclient.Receive([ref]$endpoint)
+    $enc.GetString($content)
+
+    if ([console]::KeyAvailable)
+    {
+      $loop = $false 
+    } 
+  }
+  write-host "<end>"
+}
