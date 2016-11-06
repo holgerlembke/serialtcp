@@ -20,7 +20,9 @@ serialUDP::~serialUDP() {
 //=====================================================================================
 size_t serialUDP::write(uint8_t data)
 {
-//    _client.write(data);
+  _client.beginPacket(_ip.c_str(),_port); 
+  _client.write(&data,sizeof(data));
+  _client.endPacket();
     
   Serial.write(data);
 
@@ -32,7 +34,9 @@ size_t serialUDP::write(const char *str)
 {
   if (str == NULL) return 0; 
 
-//    _client.write((const uint8_t *)str, strlen(str)); 
+  _client.beginPacket(_ip.c_str(),_port); 
+  _client.write((const uint8_t *)str, strlen(str));
+  _client.endPacket();
     
    return Serial.write((const uint8_t *)str, strlen(str)); 
 }
