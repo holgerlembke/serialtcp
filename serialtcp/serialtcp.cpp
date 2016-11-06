@@ -23,6 +23,7 @@ size_t serialUDP::write(uint8_t data)
   _client.beginPacket(_ip.c_str(),_port); 
   _client.write(&data,sizeof(data));
   _client.endPacket();
+  delay(1);
     
   Serial.write(data);
 
@@ -37,6 +38,7 @@ size_t serialUDP::write(const char *str)
   _client.beginPacket(_ip.c_str(),_port); 
   _client.write((const uint8_t *)str, strlen(str));
   _client.endPacket();
+  delay(1);
     
    return Serial.write((const uint8_t *)str, strlen(str)); 
 }
@@ -47,6 +49,7 @@ size_t serialUDP::write(const uint8_t *buffer, size_t size)
   _client.beginPacket(_ip.c_str(),_port); 
   _client.write(buffer,size);
   _client.endPacket();
+  delay(1);
 
   return Serial.write((const uint8_t *)buffer, size);
 }
