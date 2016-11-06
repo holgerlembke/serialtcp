@@ -1,5 +1,5 @@
 # serialUDP
-send debug data to serial port and via tcp connection to a listener (made for esp8266/esp32)
+send debug data to serial port and via udp packets to a listener (made for esp8266/esp32)
 
 Using it is simple: after establishing the wifi-connection call
 ```
