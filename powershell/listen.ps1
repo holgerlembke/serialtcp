@@ -48,12 +48,12 @@ function udplisten($port=2223, $IPAdress="127.0.0.1"){
   write-host "Listen on  $IPAdress $port"
   $enc = [System.Text.Encoding]::ASCII
   $loop=$true;
+  $endpoint = new-object System.Net.IPEndPoint ([IPAddress]::Any,$port)
+  $udpclient=new-Object System.Net.Sockets.UdpClient $port
   while ($loop)
   {
-    $endpoint = new-object System.Net.IPEndPoint ([IPAddress]::Any,$port)
-    $udpclient=new-Object System.Net.Sockets.UdpClient $port
     $content=$udpclient.Receive([ref]$endpoint)
-    $enc.GetString($content)
+    write-host -NoNewline $enc.GetString($content)
 
     if ([console]::KeyAvailable)
     {
@@ -62,3 +62,6 @@ function udplisten($port=2223, $IPAdress="127.0.0.1"){
   }
   write-host "<end>"
 }
+
+
+
