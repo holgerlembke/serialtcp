@@ -1,4 +1,21 @@
-# serialtcp
+# serialUDP
+send debug data to serial port and via tcp connection to a listener (made for esp8266/esp32)
+
+Using it is simple: after establishing the wifi-connection call
+```
+  SerialUDP.begin(115200,"1.2.3.4",1111);  
+  SerialUDP.println("Test");
+```
+# listener
+made for powershell
+
+Usage: load the function, than call it.
+```
+ . .\listen.ps1
+ tcplisten -p 1111 -ip 1.2.3.4
+```
+
+# serialTCP
 send debug data to serial port and via tcp connection to a listener (made for esp8266/esp32)
 
 Using it is simple: after establishing the wifi-connection call
@@ -12,7 +29,7 @@ made for powershell
 Usage: load the function, than call it.
 ```
  . .\listen.ps1
- listen -p 1111 -ip 1.2.3.4
+  udplisten -p 1111 -ip 1.2.3.4
 ```
  
  
