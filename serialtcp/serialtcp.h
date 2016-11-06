@@ -6,6 +6,27 @@
 #include <inttypes.h>
 #include "Print.h"
 #include <ESP8266WiFi.h>
+#include <WiFiUdp.h>
+
+class serialUDP : public Print
+{
+  private:
+    String _ip;
+    uint16_t _port;
+    WiFiUDP _client;
+    
+  public:
+    serialUDP();
+    virtual ~serialUDP();
+
+    size_t write(uint8_t data);
+    size_t write(const char *str);
+    size_t write(const uint8_t *buffer, size_t size);
+
+    void begin(long baud, String ip, uint16_t port, bool reconnect = true);
+};
+
+extern serialUDP SerialUDP;
 
 
 class serialTCP : public Print
@@ -30,6 +51,7 @@ class serialTCP : public Print
 };
 
 extern serialTCP SerialTCP;
+
 
 #endif
 
