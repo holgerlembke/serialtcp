@@ -26,6 +26,11 @@ Using it is simple: after establishing the wifi-connection call
 # listener
 made for powershell
 
+In case you need to set the execution policy before:
+```
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
 Usage: load the function, than call it.
 ```
  . .\listen.ps1
