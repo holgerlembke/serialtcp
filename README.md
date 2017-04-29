@@ -12,7 +12,7 @@ made for powershell
 Usage: load the function, than call it.
 ```
  . .\listen.ps1
- tcplisten -p 1111 -ip 1.2.3.4
+  udplisten -p 1111 -ip 1.2.3.4
 ```
 
 # serialTCP
@@ -34,7 +34,7 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 Usage: load the function, than call it.
 ```
  . .\listen.ps1
-  udplisten -p 1111 -ip 1.2.3.4
+ tcplisten -p 1111 -ip 1.2.3.4
 ```
  
  
