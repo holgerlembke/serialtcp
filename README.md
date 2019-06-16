@@ -1,3 +1,9 @@
+# include 
+
+```
+  #include <serialtcp.h>
+```
+
 # serialUDP
 send debug data to serial port and via udp packets to a listener (made for esp8266/esp32)
 
