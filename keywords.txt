@@ -1,0 +1,3 @@
+SerialUDP	KEYWORD1
+SerialTCP	KEYWORD1
+
