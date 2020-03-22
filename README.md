@@ -55,4 +55,31 @@ For the unpracticed:
 ```
 (There *is* an extra space...)
 
-Thanks for H.R. pointing out socat.
+Thanks go to H. R. for pointing out socat.
+
+# Suspend and Resume 
+
+In case you want to suspend sending messages it is safe to call
+
+```
+  SerialUDP.end();
+```
+
+or
+
+```
+  SerialTCP.end();
+```
+
+To resume services, simply call
+
+```
+  SerialUDP.begin();
+```
+
+or
+
+```
+  SerialTCP.begin();
+```
+
