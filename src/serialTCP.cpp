@@ -12,6 +12,7 @@ serialTCP SerialTCP;
 serialUDP::serialUDP() {
   _ip = "";
   _port = 0;
+  _active = false;
 }
 
 serialUDP::~serialUDP() {
@@ -20,6 +21,8 @@ serialUDP::~serialUDP() {
 //=====================================================================================
 size_t serialUDP::write(uint8_t data)
 {
+  if (! _active) return 0;
+	
   if (_ip == "") {
     Serial.write(data);
     return 1;
@@ -42,6 +45,8 @@ size_t serialUDP::write(uint8_t data)
 //=====================================================================================
 size_t serialUDP::write(const char *str)
 {
+  if (! _active) return 0;
+
   if (str == NULL) {
     return 0;
   } else if (_ip == "") {
@@ -65,6 +70,8 @@ size_t serialUDP::write(const char *str)
 //=====================================================================================
 size_t serialUDP::write(const uint8_t *buffer, size_t size)
 {
+  if (! _active) return 0;
+
   if (_ip == "") {
     return Serial.write((const uint8_t *)buffer, size);
   } else {
@@ -92,10 +99,23 @@ void serialUDP::begin(long baud, String ip, uint16_t port, bool reconnect)
 {
   _port = port;
   _ip = ip;
+  _active = true;
 
   if (baud > 0) {
     Serial.begin(baud);
   }
+}
+
+//=====================================================================================
+void serialUDP::begin()
+{
+  _active = true;
+}
+
+//=====================================================================================
+void serialUDP::end()
+{
+  _active = false;
 }
 
 
@@ -106,6 +126,7 @@ serialTCP::serialTCP() {
   _reconnect = true;
   _ip = "";
   _port = 0;
+ _active = false;
 }
 
 serialTCP::~serialTCP() {
@@ -115,6 +136,8 @@ serialTCP::~serialTCP() {
 //*************************************************************************************
 size_t serialTCP::write(uint8_t data)
 {
+  if (! _active) return 0;
+
   if (! _client) {
     opentcp();
   }
@@ -131,6 +154,8 @@ size_t serialTCP::write(uint8_t data)
 //*************************************************************************************
 size_t serialTCP::write(const char *str)
 {
+  if (! _active) return 0;
+
   if (str == NULL) return 0;
 
   if (! _client) {
@@ -147,6 +172,8 @@ size_t serialTCP::write(const char *str)
 //*************************************************************************************
 size_t serialTCP::write(const uint8_t *buffer, size_t size)
 {
+  if (! _active) return 0;
+
   if (! _client) {
     opentcp();
   }
@@ -192,5 +219,18 @@ void serialTCP::begin(long baud, String ip, uint16_t port, bool reconnect)
   if (baud > 0) {
     Serial.begin(baud);
   }
+}
+
+//*************************************************************************************
+void serialTCP::begin()
+{
+  _active = true;
+}
+
+//*************************************************************************************
+void serialTCP::end()
+{
+  _active = false;
+  closetcp();
 }
 

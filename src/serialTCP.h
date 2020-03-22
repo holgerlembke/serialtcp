@@ -27,6 +27,7 @@ class serialUDP : public Print
     String _ip;
     uint16_t _port;
     WiFiUDP _client;
+	bool _active;
     
   public:
     serialUDP();
@@ -37,6 +38,8 @@ class serialUDP : public Print
     size_t write(const uint8_t *buffer, size_t size);
 
     void begin(long baud, String ip, uint16_t port, bool reconnect = true);
+	void begin();
+	void end();
 };
 
 extern serialUDP SerialUDP;
@@ -49,6 +52,7 @@ class serialTCP : public Print
     uint16_t _port;
     WiFiClient _client;
     bool _reconnect;
+	bool _active;
     
     void opentcp();
     void closetcp();
@@ -61,6 +65,8 @@ class serialTCP : public Print
     size_t write(const uint8_t *buffer, size_t size);
 
     void begin(long baud, String ip, uint16_t port, bool reconnect = true);
+	void begin();
+	void end();
 };
 
 extern serialTCP SerialTCP;
