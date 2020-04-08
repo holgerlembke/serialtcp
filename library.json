@@ -2,7 +2,6 @@
   "name": "SerialTcp",
   "version": "1.4.7",
   "keywords": "Debug, Remote, WiFi, TCP, UDP",
-  "description": "Library allows to debug via SerialUPD.print() and SerialTCP.print(). Prints everything to a serial console and in parallel to a dedicated remote machine. Usefull in case OTA is used and there is no serial connection.",
   "repository":
   {
     "type": "git",
@@ -13,6 +12,7 @@
     "name": "Holger Lembke",
     "email": "holger@lembke.eu",
   },
+  "description": "Library allows to debug via SerialUPD.print() and SerialTCP.print(). Prints everything to a serial console and in parallel to a dedicated remote machine. Usefull in case OTA is used and there is no serial connection.",
   "frameworks": "arduino",
   "platforms": "*"
 }
