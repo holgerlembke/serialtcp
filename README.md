@@ -34,7 +34,7 @@ made for powershell
 
 In case you need to set the execution policy before:
 ```
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+Set-ExecutionPolicy unrestricted -Scope CurrentUser
 ```
 
 Usage: load the function, than call it.
