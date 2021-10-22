@@ -12,7 +12,7 @@
 #ifdef ARDUINO_ARCH_ESP8266
 #include <ESP8266WiFi.h>
 #else
-#error I don't know this Wifi-platform.	
+#error I don´t know this Wifi-platform.	
 #endif
 #endif
 
