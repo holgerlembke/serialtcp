@@ -21,6 +21,14 @@ Usage: load the function, than call it.
   udplisten -p 1111 -ip 1.2.3.4
 ```
 
+With multiples sender active, the shell will be flodded with messages. Use
+```
+ . .\listen.ps1
+  udplisten -p 1111 -ip 1.2.3.4 -client 5.6.7.8
+```
+
+to focus on one sender.
+
 # serialTCP
 send debug data to serial port and via tcp connection to a listener (made for esp8266/esp32)
 

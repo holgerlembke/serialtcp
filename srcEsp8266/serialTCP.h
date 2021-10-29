@@ -16,9 +16,12 @@
 #endif
 #endif
 
+
+
+
 #include <WiFiUdp.h>
 
-class serialUDP : public HardwareSerial
+class serialUDP : public Print
 {
   private:
     String _ip;
@@ -27,7 +30,7 @@ class serialUDP : public HardwareSerial
 	bool _active;
     
   public:
-    serialUDP(int uart_nr);
+    serialUDP();
     virtual ~serialUDP();
 
     size_t write(uint8_t data);
@@ -42,7 +45,7 @@ class serialUDP : public HardwareSerial
 extern serialUDP SerialUDP;
 
 
-class serialTCP : public HardwareSerial
+class serialTCP : public Print
 {
   private:
     String _ip;
@@ -54,7 +57,7 @@ class serialTCP : public HardwareSerial
     void opentcp();
     void closetcp();
   public:
-    serialTCP(int uart_nr);
+    serialTCP();
     virtual ~serialTCP();
 
     size_t write(uint8_t data);

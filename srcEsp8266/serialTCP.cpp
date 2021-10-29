@@ -3,13 +3,13 @@
 #include "serialTCP.h"
 #include <WiFiUdp.h>
 
-serialUDP SerialUDP(0);
-serialTCP SerialTCP(0);
+serialUDP SerialUDP;
+serialTCP SerialTCP;
 
 //=====================================================================================
 //=====================================================================================
 //=====================================================================================
-serialUDP::serialUDP(int uart_nr):HardwareSerial(uart_nr) {
+serialUDP::serialUDP() {
   _ip = "";
   _port = 0;
   _active = false;
@@ -122,7 +122,7 @@ void serialUDP::end()
 //*************************************************************************************
 //*************************************************************************************
 //*************************************************************************************
-serialTCP::serialTCP(int uart_nr):HardwareSerial(uart_nr) {
+serialTCP::serialTCP() {
   _reconnect = true;
   _ip = "";
   _port = 0;
